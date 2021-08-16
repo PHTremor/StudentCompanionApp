@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:login/responsive/sizing/base_widget.dart';
+import 'package:login/responsive/sizing/sizing_information.dart';
 import 'package:login/routes.dart';
 import 'package:login/widgets/curve_banner_text.dart';
 import 'package:login/widgets/custom_dialog_box.dart';
@@ -12,36 +14,40 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: <Widget>[
-            Stack(
-              children: [
-                ClipPath(
-                  //ProfileCripper class makes the top container to have curves
-                  clipper: ProfileCripper(),
-                  //Green widget at top (with Curves, lol)
-                  child: TopCurveBanner(
-                    title: title,
-                  ),
+    return BaseWidget(
+      builder: (context, sizingInformation) {
+        return SafeArea(
+          child: Scaffold(
+            body: Column(
+              children: <Widget>[
+                Stack(
+                  children: [
+                    ClipPath(
+                      //ProfileCripper class makes the top container to have curves
+                      clipper: ProfileCripper(),
+                      //Green widget at top (with Curves, lol)
+                      child: TopCurveBanner(
+                        title: title,
+                      ),
+                    ),
+                    CurveBannerText(),
+                    //Profile image and editing pen
+                    _profileImage(sizingInformation),
+                    _editPen(sizingInformation, context),
+                  ],
                 ),
-                CurveBannerText(),
-                //Profile image and editing pen
-                _profileImage(),
-                _editPen(),
+                //Name and Student ID
+                _studentInfoText(context),
+
+                //
+                //Profile Menu ListView
+                SizedBox(height: 30),
+                _profileListItems(context),
               ],
             ),
-            //Name and Student ID
-            _studentInfoText(context),
-
-            //
-            //Profile Menu ListView
-            SizedBox(height: 30),
-            _profileListItems(context),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 
@@ -197,30 +203,34 @@ class ProfilePage extends StatelessWidget {
   }
 
 // edit pen to edit profile image
-  Widget _editPen() {
+  Widget _editPen(SizingInformation sizingInformation, BuildContext context) {
     return Positioned(
-      bottom: 2.5,
-      left: 230,
-      child: Container(
-        height: 30.0,
-        width: 30.0,
-        decoration: BoxDecoration(
-          color: Colors.yellow,
-          shape: BoxShape.circle,
-        ),
-        child: Icon(
-          Icons.edit,
-          color: Colors.black54,
+      bottom: sizingInformation.screenSize.height / 200.0,
+      right: sizingInformation.screenSize.width * 0.42,
+      //opens dialog to edit
+      child: GestureDetector(
+        onTap: () => {openDialog(context)},
+        child: Container(
+          height: 30.0,
+          width: 30.0,
+          decoration: BoxDecoration(
+            color: Colors.yellow,
+            shape: BoxShape.circle,
+          ),
+          child: Icon(
+            Icons.edit,
+            color: Colors.black54,
+          ),
         ),
       ),
     );
   }
 
 // the Profile image
-  Widget _profileImage() {
+  Widget _profileImage(SizingInformation sizingInformation) {
     return Positioned(
-      bottom: 2.5,
-      right: 150,
+      bottom: sizingInformation.screenSize.height * 0.01,
+      right: sizingInformation.screenSize.width * 0.4,
       child: CircleAvatar(
         radius: 60.0,
         backgroundImage: AssetImage("assets/images/face_girl.jpg"),

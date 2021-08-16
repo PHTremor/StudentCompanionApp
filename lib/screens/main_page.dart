@@ -14,6 +14,7 @@ class MainPage extends StatefulWidget {
   _MainPageState createState() => _MainPageState();
 }
 
+// Holds all categories of the nav bar
 enum BottomIcons { Home, Peers, Maps, Resources, Account }
 
 class _MainPageState extends State<MainPage> {
@@ -27,7 +28,7 @@ class _MainPageState extends State<MainPage> {
       child: Scaffold(
         body: Stack(
           children: <Widget>[
-            //holds all main pages /the 4 screens
+            //holds all main pages /the 5 screens
             //if bottomIcons == home /display home screen ...
             bottomIcons == BottomIcons.Home
                 ? Padding(

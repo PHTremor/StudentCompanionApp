@@ -29,7 +29,7 @@ class _BottomBarState extends State<BottomBar> {
                 color: mzuniYellow.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(30),
               ),
-              padding: EdgeInsets.only(left: 10, right: 5, top: 8, bottom: 8),
+              padding: EdgeInsets.only(left: 5, right: 5, top: 8, bottom: 8),
               child: Row(
                 children: <Widget>[
                   Icon(
@@ -42,7 +42,7 @@ class _BottomBarState extends State<BottomBar> {
                   ),
                   Text(
                     widget.text,
-                    style: Theme.of(context).textTheme.caption,
+                    style: Theme.of(context).textTheme.headline6,
                   ),
                 ],
               ),
