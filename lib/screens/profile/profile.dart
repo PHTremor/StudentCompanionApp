@@ -56,6 +56,7 @@ class ProfilePage extends StatelessWidget {
     return Expanded(
       child: ListView(
         children: [
+          //on tap go to registered courses
           GestureDetector(
             onTap: () => Navigator.of(context)
                 ?.pushNamed(RouteGenerator.registeredCoursesPage),

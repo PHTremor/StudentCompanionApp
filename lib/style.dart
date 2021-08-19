@@ -13,6 +13,8 @@ const Color TextColorGrey = Color.fromRGBO(125, 125, 125, 1.0);
 
 const Color mzuniGreen = Color(0xFF4CAF50);
 const Color mzuniYellow = Color(0xFFFDD835);
+const Color mzuniWhite = Colors.white;
+const Color mzuniWhiter = Colors.white70;
 
 const DefaultPaddingHorizontal = 12.0;
 
@@ -25,7 +27,7 @@ const AppBarTextStyle = TextStyle(
 
 const TitleTextStyle = TextStyle(
   fontFamily: FontNameDefault,
-  fontWeight: FontWeight.w300,
+  fontWeight: FontWeight.w600,
   fontSize: LargeTextSize,
   color: Colors.black,
 );

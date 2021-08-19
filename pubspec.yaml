@@ -31,6 +31,12 @@ dependencies:
   flutter_svg: ^0.22.0
   provider: ^5.0.0
   bloc: ^7.0.0
+  flutter_bloc: 
+  meta: 
+  equatable: 
+  http: 
+  sqflite: 
+  path_provider: 
 
 
 

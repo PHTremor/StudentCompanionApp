@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:login/screens/academic_resources/academic_resource_screen.dart';
+import 'package:login/screens/home/notifications_screen.dart';
 import 'package:login/screens/maps/locate_building.dart';
-import 'package:login/screens/notifications/notifications_screen.dart';
 import 'package:login/screens/peer_clubs/peer_clubs_screen.dart';
 import 'package:login/widgets/bottom_bar.dart';
 import 'package:login/screens/profile/profile.dart';
 
+// Holds the Bottom Nav Bar
 class MainPage extends StatefulWidget {
   const MainPage({Key key}) : super(key: key);
 

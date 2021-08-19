@@ -33,61 +33,11 @@ class LoginUi extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   children: [
                     //login form widget
-                    SingleChildScrollView(
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxHeight: MediaQuery.of(context).size.height / 5.0,
-                          minWidth: MediaQuery.of(context).size.width / 2.0,
-                        ),
-                        child: LoginFormWidget(30.0, 30.0),
-                      ),
-                    ),
+                    LoginFormWidget(30.0, 30.0),
                     //LoginUi Button BG Circle
-                    Positioned(
-                      top: 40.0,
-                      bottom: 50.0,
-                      right: 50.0,
-                      child: GestureDetector(
-                        //RouteGeneartor to generate a route from the login button
-                        onTap: () => Navigator.of(context)
-                            ?.pushNamed(RouteGenerator.mainPageNav),
-                        child: Container(
-                          padding: EdgeInsets.all(10),
-                          decoration: ShapeDecoration(
-                            shape: CircleBorder(),
-                            gradient: LinearGradient(
-                              colors: signInGradients,
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                            ),
-                          ),
-                          //LoginUi Button
-                          child: SvgPicture.asset(
-                            "assets/images/login.svg",
-                            height: 25.0,
-                            width: 25.0,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 70),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.only(top: 40),
-                              child: Text(
-                                "Forgot?",
-                                textAlign: TextAlign.end,
-                                style: Theme.of(context).textTheme.caption,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    loginButton(context),
+                    //forgot password
+                    forgotPassText(context),
                   ],
                 ),
               ],
@@ -98,6 +48,57 @@ class LoginUi extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+
+  Widget forgotPassText(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(right: 70),
+      child: Row(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(top: 40),
+              child: Text(
+                "Forgot?",
+                textAlign: TextAlign.end,
+                style: Theme.of(context).textTheme.caption,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget loginButton(BuildContext context) {
+    return Positioned(
+      top: 40.0,
+      bottom: 50.0,
+      right: 50.0,
+      child: GestureDetector(
+        //RouteGeneartor to generate a route from the login button
+        onTap: () =>
+            Navigator.of(context)?.pushNamed(RouteGenerator.mainPageNav),
+        child: Container(
+          padding: EdgeInsets.all(10),
+          decoration: ShapeDecoration(
+            shape: CircleBorder(),
+            gradient: LinearGradient(
+              colors: signInGradients,
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          //LoginUi Button
+          child: SvgPicture.asset(
+            "assets/images/login.svg",
+            height: 25.0,
+            width: 25.0,
+            color: Colors.white,
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login/routes.dart';
 import 'package:login/style.dart';
+import 'package:login/widgets/back_arrow.dart';
 
 class TopCurveBanner extends StatelessWidget {
   final String title;
@@ -22,7 +23,7 @@ class TopCurveBanner extends StatelessWidget {
       child: Stack(
         children: [
           //Back arrow button ./Add Search to the left/logout Button
-          _backArrow(context),
+          CustomBackArrow(),
           SizedBox(width: 10),
           Positioned(
             top: 12.0,
@@ -44,21 +45,6 @@ class TopCurveBanner extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _backArrow(context) {
-    return IconButton(
-      padding: EdgeInsets.only(left: 20),
-      icon: Icon(
-        Icons.arrow_back_ios,
-        color: Colors.white,
-        size: 30.0,
-      ),
-      //Go back to last screen /pop
-      onPressed: () {
-        Navigator.of(context)?.pop();
-      },
     );
   }
 

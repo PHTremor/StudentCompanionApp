@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login/screens/home/events/event_details_screen.dart';
 import 'package:login/screens/profile/registered_courses/registered_courses.dart';
 import 'package:login/screens/login/login_screen.dart';
 import 'package:login/screens/main_page.dart';
@@ -37,6 +38,13 @@ class RouteGenerator {
           builder: (_) => const RegisteredCoursesScreen(),
         );
         break;
+
+      //RegisteredCourses
+      case eventDetailsPage:
+        return MaterialPageRoute<EventDetails>(
+          builder: (_) => const EventDetails(),
+        );
+        break;
       //other screen cases here
       default:
         throw RouteException("Route  not Found");
@@ -47,6 +55,7 @@ class RouteGenerator {
   static const mainPageNav = 'main_page';
   static const profilePage = '/profile';
   static const registeredCoursesPage = '/registered_courses';
+  static const eventDetailsPage = '/event_details';
 }
 
 //Exception thrown when a given route doest exist

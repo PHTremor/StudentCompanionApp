@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login/constants.dart';
+import 'package:login/widgets/constants.dart';
 
 class CustomDialogBox extends StatefulWidget {
   final String title, descriptions, text;

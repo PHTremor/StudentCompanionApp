@@ -48,36 +48,9 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                     key: _formKey,
                     child: Wrap(
                       children: [
-                        TextFormField(
-                          controller: _studentIdController,
-                          decoration: InputDecoration(
-                            fillColor: mzuniGreen,
-                            prefixIcon: Icon(Icons.account_circle),
-                            border: UnderlineInputBorder(),
-                            hintText: "Student ID",
-                            hintStyle:
-                                Theme.of(context).textTheme.caption.copyWith(
-                                      color: Color(0xFFE1E1E1),
-                                    ),
-                            // TextStyle(color: Color(0xFFE1E1E1), fontSize: 14),
-                          ),
-                          validator: _validateStudent,
-                        ),
+                        studentIDField(context),
                         SizedBox(),
-                        TextFormField(
-                          controller: _passwordController,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.lock),
-                            border: UnderlineInputBorder(),
-                            hintText: "Password",
-                            hintStyle:
-                                Theme.of(context).textTheme.caption.copyWith(
-                                      color: Color(0xFFE1E1E1),
-                                    ),
-                          ),
-                          validator: _validatePassword,
-                        ),
+                        passwordField(context),
                       ],
                     ),
                   ),
@@ -87,6 +60,39 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget passwordField(BuildContext context) {
+    return TextFormField(
+      controller: _passwordController,
+      obscureText: true,
+      decoration: InputDecoration(
+        prefixIcon: Icon(Icons.lock),
+        border: UnderlineInputBorder(),
+        hintText: "Password",
+        hintStyle: Theme.of(context).textTheme.caption.copyWith(
+              color: Color(0xFFE1E1E1),
+            ),
+      ),
+      validator: _validatePassword,
+    );
+  }
+
+  Widget studentIDField(BuildContext context) {
+    return TextFormField(
+      controller: _studentIdController,
+      decoration: InputDecoration(
+        fillColor: mzuniGreen,
+        prefixIcon: Icon(Icons.account_circle),
+        border: UnderlineInputBorder(),
+        hintText: "Student ID",
+        hintStyle: Theme.of(context).textTheme.caption.copyWith(
+              color: Color(0xFFE1E1E1),
+            ),
+        // TextStyle(color: Color(0xFFE1E1E1), fontSize: 14),
+      ),
+      validator: _validateStudent,
     );
   }
 

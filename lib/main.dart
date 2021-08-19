@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:login/blocs/authentication_bloc.dart';
 import 'package:login/provider/bottom_navigation_bar_provider.dart';
+import 'package:login/repository/student_repository.dart';
+import 'package:login/repository/student_repository/php_repository.dart';
 import 'package:login/routes.dart';
 import 'package:login/style.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(
+      //the provider will cache an instance of the StudentRepository
+      Provider<StudentRepository>(
+        create: (_) => PhpStudentRepository(),
+        child: const MyApp(),
+      ),
+    );
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -14,16 +22,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => BottomNavigationBarProvider(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: _theme(),
-        onGenerateTitle: (context) => "Companion App",
-        //Route Generator
-        initialRoute: RouteGenerator.homePage,
-        onGenerateRoute: RouteGenerator.generateRoute,
+    final repository = context.select((PhpStudentRepository r) => r);
+
+    return BlocProvider<AuthenticationBloc>(
+      create: (context) => AuthenticationBloc(repository),
+      child: ChangeNotifierProvider(
+        create: (context) => BottomNavigationBarProvider(),
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          debugShowCheckedModeBanner: false,
+          theme: _theme(),
+          onGenerateTitle: (context) => "Companion App",
+          //Route Generator
+          initialRoute: RouteGenerator.homePage,
+          onGenerateRoute: RouteGenerator.generateRoute,
+        ),
       ),
     );
   }
